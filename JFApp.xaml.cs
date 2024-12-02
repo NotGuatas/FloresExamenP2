@@ -1,8 +1,8 @@
 ﻿namespace FloresExamenP2
 {
-    public partial class App : Application
+    public partial class JFApp : Application
     {
-        public App()
+        public JFApp()
         {
             InitializeComponent();
 
