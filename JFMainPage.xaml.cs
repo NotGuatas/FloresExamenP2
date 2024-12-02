@@ -1,25 +1,61 @@
-﻿namespace FloresExamenP2
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿using System.Runtime.CompilerServices;
 
-        public MainPage()
+namespace FloresExamenP2
+{
+    public partial class JFMainPage : ContentPage
+    {
+
+        public JFMainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnConvertClicked(object sender, EventArgs e)
         {
-            count++;
+            if (double.TryParse(InputCantidad.Text, out double cantidad) &&
+                PickerOrigen.SelectedIndex != -1 &&
+                PickerDestino.SelectedIndex != -1)
+            {
+                string unidadOrigen = PickerOrigen.SelectedItem.ToString();
+                string unidadDestino = PickerOrigen.SelectedItem.ToString();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+                double resultado = ConvertirLongitud(cantidad, unidadOrigen, unidadDestino);
+                LabelResultado.Text = "Resultado: {resultado} {unidadDestino}";
+            }
             else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            {
+                DisplayAlert("No válido", "Llene todos los campos");
+            }
         }
+
+        private double ConvertirLongitud (double cantidad, string origen, string destino)
+        {
+            if (origen == destino) return cantidad;
+
+            double metros = origen switch
+            {
+                "Metros" => cantidad,
+                "Kilometros" => cantidad * 1000,
+                "Millas" => cantidad * 1609.34
+            };
+
+            return destino switch
+            {
+                "Metros" => cantidad,
+                "Kilometros" => cantidad * 1000,
+                "Millas" => cantidad * 1609.34
+            };
+
+         }
+
+        private void OnLimpiarClicked(object sender, EventArgs e)
+        {
+            InputCantidad.Text = string.Empty;
+            PickerOrigen.SelectIndex = -1;
+            PickerDestino.SelectIndex = -1;
+            LabelResultado.Text = "Resultado: ";
+        }
+
     }
 
 }

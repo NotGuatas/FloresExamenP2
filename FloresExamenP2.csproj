@@ -63,6 +63,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="JFApp.xaml.cs">
+	    <DependentUpon>JFApp.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="JFMainPage.xaml.cs">
 	    <DependentUpon>JFMainPage.xaml</DependentUpon>
 	  </Compile>

@@ -1,11 +1,8 @@
 ﻿
-    
-    
-    
     <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FloresExamenP2.MainPage"
+             x:Class="FloresExamenP2.JFMainPage"
              Title="Conversor de longitud">
 
     <ScrollView>
@@ -16,21 +13,36 @@
                 Text="Conversor de longitud"
                 FontSize="24"
                 HorizontalOptions="Center"/>
-            <Entry x:Name="InputCantidad"
+
+            <Entry x:Name="InputadCantidad"
                    Placeholder="Ingresa la cantidad"
                    Keyboard="Numeric"/>
+
             <Picker x:Name="PickerOrigen"
                     Title="Unidad de origen">
                 <Picker.Items>
-                    <x:.String>Metros
-                        </x:String>
-                    
+                    <x:String>Metros</x:String>
+                    <x:String>Kilometros</x:String>
+                    <x:String>Millas</x:String>
                 </Picker.Items>
+
+            </Picker>
+            <Button Text="Convertir"
+                    Clicked="OnConvertirClicked"/>
+            <Label x:Name="LabelResultado"
+                   Text="Resultado: "
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   />
+            <Button Text="Limpiar"
+                    Clicked="OnLimpiarClicked"
+                    />
             <Image
                 Source="dotnet_bot.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+                SemanticProperties.Description="dot
+                net bot in a race car number eight" />
 
             <Label
                 Text="Hello, World!"
@@ -42,29 +54,6 @@
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             <Button
                 x:Name="CounterBtn"
                 Text="Click me" 
